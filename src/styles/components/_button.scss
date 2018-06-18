@@ -1,0 +1,22 @@
+.big-button{
+    margin: none;
+    background: $brand-color;
+    border:0;
+    border-bottom: .6rem solid darken($brand-color, 10%);
+    color: $title-color-hc;
+    font-weight: bold;
+    font-size: $l-size;
+    width: 100%;
+    margin-bottom: $xl-size;
+    padding: 2.4rem;
+    &:disabled{
+        opacity: .5;
+    }
+}
+
+button{
+    cursor: pointer;
+    &:disabled{
+        cursor: default;
+    }
+}
