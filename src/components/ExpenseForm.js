@@ -19,21 +19,20 @@ export default class ExpenseForm extends Component {
     e.preventDefault();
   };
   handleChangeDescription = e => {
+    const description = e.target.value;
     this.setState(() => ({
-      description: e.target.value
+      description
     }));
   };
   handleChangeAmount = e => {
     const amount = e.target.value;
-    amount.match(/^\d+(\.\d{0,2})?$/) &&
-      this.setState(() => ({
-        notes: amount
-      }));
+    if (amount.match(/^\d*(\.\d{0,2})?$/)) {
+      this.setState(() => ({ amount }));
+    }
   };
   handleChangeNotes = e => {
-    this.setState(() => ({
-      notes: e.target.value
-    }));
+    const notes = e.target.value;
+    this.setState(() => ({ notes }));
   };
 
   render() {
@@ -45,11 +44,16 @@ export default class ExpenseForm extends Component {
           value={this.state.description}
           onChange={this.handleChangeDescription}
         />
-        <input type="number" name="amount" value={this.state.amount} />
+        <input
+          type="number"
+          name="amount"
+          value={this.state.amount}
+          onChange={this.handleChangeAmount}
+        />
         <textarea
           name="notes"
           value={this.state.notes}
-          onChange={this.props.handleChangeNotes}
+          onChange={this.handleChangeNotes}
         />
       </form>
     );
